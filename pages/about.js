@@ -58,10 +58,10 @@ export default function About(props) {
         <meta
           property='og:url'
           key='og:url'
-          content='https://arcsoftwaredevelopment.com/about'
+          content='https://customsofware-materialui.netlify.app/about'
         />
         <link
-          href='https://arcsoftwaredevelopment.com/about'
+          href='https://customsofware-materialui.netlify.app/about'
           rel='canonical'
           key='canonical'
         />

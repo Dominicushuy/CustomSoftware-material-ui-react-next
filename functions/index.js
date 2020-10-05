@@ -1,17 +1,17 @@
-const functions = require("firebase-functions");
+const functions = require('firebase-functions');
 const config = functions.config();
-const admin = require("firebase-admin");
-const nodemailer = require("nodemailer");
-const cors = require("cors")({ origin: true });
+const admin = require('firebase-admin');
+const nodemailer = require('nodemailer');
+const cors = require('cors')({ origin: true });
 
 admin.initializeApp();
 
 let transporter = nodemailer.createTransport({
-  service: "gmail",
+  service: 'gmail',
   auth: {
     user: config.user.email,
-    pass: config.user.password
-  }
+    pass: config.user.password,
+  },
 });
 
 let mailOptions;
@@ -29,15 +29,15 @@ exports.sendMail = functions.https.onRequest((req, res) => {
       features,
       customFeatures,
       users,
-      category
+      category,
     } = req.query;
 
     if (total) {
       if (category) {
         mailOptions = {
           from: `Arc Development`,
-          to: "noreply.arcdevelopment@gmail.com",
-          subject: "Estimate received!",
+          to: 'noreply.arcdevelopment@gmail.com',
+          subject: 'Estimate received!',
           html: `
             <p style="font-size: 16px;">From: ${name}</p>
             <p style="font-size: 16px;">Email: ${email}</p>
@@ -46,21 +46,21 @@ exports.sendMail = functions.https.onRequest((req, res) => {
             <p style="font-size: 16px;">Total: ${total}</p>
             <p style="font-size: 16px;">Service: ${service}</p>
             <p style="font-size: 16px;">Category: ${category}</p>
-            `
+            `,
         };
 
-        transporter.sendMail(mailOptions, error => {
+        transporter.sendMail(mailOptions, (error) => {
           if (error) {
             res.send(error);
           } else {
-            res.send("Message sent successfully.");
+            res.send('Message sent successfully.');
           }
         });
       } else {
         mailOptions = {
           from: `Arc Development`,
-          to: "noreply.arcdevelopment@gmail.com",
-          subject: "Estimate received!",
+          to: 'noreply.arcdevelopment@gmail.com',
+          subject: 'Estimate received!',
           html: `
             <p style="font-size: 16px;">From: ${name}</p>
             <p style="font-size: 16px;">Email: ${email}</p>
@@ -72,14 +72,14 @@ exports.sendMail = functions.https.onRequest((req, res) => {
             <p style="font-size: 16px;">Features: ${features}</p>
             <p style="font-size: 16px;">customFeatures: ${customFeatures}</p>
             <p style="font-size: 16px;">Users: ${users}</p>
-            `
+            `,
         };
 
-        transporter.sendMail(mailOptions, error => {
+        transporter.sendMail(mailOptions, (error) => {
           if (error) {
             res.send(error);
           } else {
-            res.send("Message sent successfully.");
+            res.send('Message sent successfully.');
           }
         });
       }
@@ -87,7 +87,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
       mailOptions = {
         from: `Arc Development`,
         to: email,
-        subject: "We have received your estimate!",
+        subject: 'We have received your estimate!',
         html: `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
   <html
@@ -289,7 +289,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                         <tr>
                           <td align="center">
                             <a
-                              href="https://arcsoftwaredevelopment.com/"
+                              href="https://customsofware-materialui.netlify.app/"
                               target="_blank"
                             >
                               <img
@@ -642,35 +642,35 @@ exports.sendMail = functions.https.onRequest((req, res) => {
   </body>
   </html>
 
-          `
+          `,
       };
 
       transporter.sendMail(mailOptions);
     } else {
       mailOptions = {
         from: `Arc Development`,
-        to: "noreply.arcdevelopment@gmail.com",
-        subject: "Message received!",
+        to: 'noreply.arcdevelopment@gmail.com',
+        subject: 'Message received!',
         html: `
           <p style="font-size: 16px;">From: ${name}</p>
           <p style="font-size: 16px;">Email: ${email}</p>
           <p style="font-size: 16px;">Phone Number: ${phone}</p>
           <p style="font-size: 16px;">Message: ${message}</p>
-          `
+          `,
       };
 
-      transporter.sendMail(mailOptions, error => {
+      transporter.sendMail(mailOptions, (error) => {
         if (error) {
           res.send(error);
         } else {
-          res.send("Message sent successfully.");
+          res.send('Message sent successfully.');
         }
       });
 
       mailOptions = {
         from: `Arc Development`,
         to: email,
-        subject: "We have received your message!",
+        subject: 'We have received your message!',
         html: `
         <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
   <html
@@ -872,7 +872,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
                         <tr>
                           <td align="center">
                             <a
-                              href="https://arcsoftwaredevelopment.com/"
+                              href="https://customsofware-materialui.netlify.app/"
                               target="_blank"
                             >
                               <img
@@ -1226,7 +1226,7 @@ exports.sendMail = functions.https.onRequest((req, res) => {
   </body>
   </html>
 
-          `
+          `,
       };
 
       transporter.sendMail(mailOptions);

@@ -1,14 +1,14 @@
-const fs = require("fs-extra");
-const getPathsObject = require("./getPathsObject");
-const formatDate = require("./formatDate");
+const fs = require('fs-extra');
+const getPathsObject = require('./getPathsObject');
+const formatDate = require('./formatDate');
 
 // ROBOTS.txt
 const robotsTxt = `User-agent: *
-Sitemap: https://arcsoftwaredevelopment.com/sitemap_local.xml
+Sitemap: https://customsofware-materialui.netlify.app/sitemap_local.xml
 Disallow:`;
 
-fs.writeFileSync("public/robots.txt", robotsTxt);
-console.log("robots.txt saved!");
+fs.writeFileSync('public/robots.txt', robotsTxt);
+console.log('robots.txt saved!');
 
 // SITEMAP.XML
 const pathsObj = getPathsObject();
@@ -16,14 +16,14 @@ const today = formatDate(new Date());
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   ${Object.keys(pathsObj)
-    .filter(path => path !== "/_document" && path !== "/_app")
+    .filter((path) => path !== '/_document' && path !== '/_app')
 
     .map(
-      path => `<url>
+      (path) => `<url>
     ${
-      path === "/index"
-        ? `<loc>https://arcsoftwaredevelopment.com</loc>`
-        : `<loc>https://arcsoftwaredevelopment.com${path}</loc>`
+      path === '/index'
+        ? `<loc>https://customsofware-materialui.netlify.app</loc>`
+        : `<loc>https://customsofware-materialui.netlify.app${path}</loc>`
     }
     <lastmod>${
       pathsObj[path].lastModified
@@ -34,5 +34,5 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
     )}
 </urlset>`;
 
-fs.writeFileSync("public/sitemap_local.xml", sitemapXml);
-console.log("sitemap_local.xml saved!");
+fs.writeFileSync('public/sitemap_local.xml', sitemapXml);
+console.log('sitemap_local.xml saved!');

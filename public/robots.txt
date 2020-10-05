@@ -1,3 +1,3 @@
 User-agent: *
-Sitemap: https://arcsoftwaredevelopment.com/sitemap_local.xml
+Sitemap: https://customsofware-materialui.netlify.app/sitemap_local.xml
 Disallow:
